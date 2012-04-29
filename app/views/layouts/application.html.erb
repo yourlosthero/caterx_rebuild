@@ -15,6 +15,30 @@
 		<%= javascript_include_tag "application", "data-turbolinks-track" => "reload", defer: true %>
 	</head>
 	<body>
+		<% unless request.original_url.split("http://")[1].split("/").count < 2 %>
+		<div class="beta-nav">
+			<div class="beta-nav-icon"><a href="/" class="logo-link">CaterX</a></div>
+			<div class="beta-nav-anchors">
+				<% if session[:caterer_id].present? %>
+				<button class="beta-nav-anchor beta-nav-login" onclick="window.location.href = '/caterers/<%= Caterer.find(session[:caterer_id]).uid %>';">Profile</button>
+				<button class="beta-nav-anchor" onclick="window.location.href = '/signout';">Log Out</button>
+				<% elsif session[:customer_id].present? %>
+				<button class="beta-nav-anchor beta-nav-login" onclick="window.location.href = '/customers/<%= Customer.find(session[:customer_id]).uid %>';">Profile</button>
+				<button class="beta-nav-anchor" onclick="window.location.href = '/signout';">Log Out</button>
+				<% else %>
+				<button class="beta-nav-anchor beta-nav-register" onclick="window.location.href = '/register';">Register</button>
+				<button class="beta-nav-anchor beta-nav-login" onclick="window.location.href = '/login';">Log In</button>
+				<% end %>
+			</div>
+		</div>
+		<% end %>
 		<%= yield %>
+		<!-- FLASH NOTICE -->
+		<% if flash.present? && params[:u] != "agency" %>
+		<% flash.each do |key, value| %>
+		<p class="notice-float"><%= value %></p>
+		<% end %>
+		<% end %>
+		<!-- END OF FLASH NOTICE -->
 	</body>
 </html>

@@ -1,11 +1,39 @@
-<%= form_for :search, namespace: 'beta', :method => 'get', url: search_path do |f| %>
-<div class="beta-main-search-inputs">
-	<div class="beta-main-search-destination beta-main-search-input">
-		<p class="beta-main-search-input-label">TYPE OF EVENT</p>
-		<%= f.select :event, options_for_select(@events) %>
+<div class="beta-main">
+	<div class="beta-nav">
+		<div class="beta-nav-anchors">
+			<% if session[:customer_id].present? %>
+			<button style="color:white;" class="beta-nav-anchor beta-nav-login" onclick="window.location.href = '/agencies/<%= Agency.find(session[:customer_id]).uid %>';">Profile</button>
+			<button style="color:white;" class="beta-nav-anchor" onclick="window.location.href = '/signout';">Log Out</button>
+			<% elsif session[:caterer_id].present? %>
+			<button style="color:white;" class="beta-nav-anchor beta-nav-login" onclick="window.location.href = '/travellers/<%= Traveller.find(session[:caterer_id]).uid %>';">Profile</button>
+			<button style="color:white;" class="beta-nav-anchor" onclick="window.location.href = '/signout';">Log Out</button>
+			<% else %>
+			<button style="color:white;" class="beta-nav-anchor" onclick="anchor('how_it_works');">How It Works</button>
+			<button style="color:white;" class="beta-nav-anchor" onclick="anchor('about');">About</button>
+			<button style="color:white;" class="beta-nav-anchor" onclick="anchor('contact_us');">Contact Us</button>
+			<button style="color:white;" class="beta-nav-anchor beta-nav-register" onclick="window.location.href = '/register';">List Your Catering</button>
+			<button style="color:white;" class="beta-nav-anchor beta-nav-login" onclick="window.location.href = '/login';">Log In</button>
+			<% end %>
+		</div>
 	</div>
-	<div class="beta-main-search-submit">
-		<button type="submit">Search</button>
+	<div class="beta-main-content">
+		<h1 class="beta-main-logo">CaterX</h1>
+		<h3 class="beta-main-mantra">Find Catering Services In an Instant</h3>
+		<%= form_for :search, namespace: 'beta', :method => 'get', url: search_path do |f| %>
+		<div class="beta-main-search-inputs">
+			<div class="beta-main-search-destination beta-main-search-input">
+				<p class="beta-main-search-input-label">TYPE OF EVENT</p>
+				<%= f.select :event, options_for_select(@events) %>
+			</div>
+			<div class="beta-main-search-submit">
+				<button type="submit">Search</button>
+			</div>
+		</div>
+		<% end %>
 	</div>
 </div>
-<% end %>
+<script type="text/javascript">
+function anchor(section) {
+	window.location.hash = section;
+}
+</script>

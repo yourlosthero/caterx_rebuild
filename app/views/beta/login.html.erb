@@ -1,19 +1,44 @@
-<button class="beta-login-facebook" onclick="window.location.href = '/auth/facebook/';" type="button">Continue With Facebook</button>
-<%= form_for :login, namespace: 'beta', :method => 'post', url: login_submit_path do |f| %>
 <div class="beta-login-inputs">
-  <div class="beta-login-email beta-login-input">
-    <p class="beta-login-input-label">MOBILE NUMBER</p>
-    <%= f.text_field :mobile, placeholder: "Mobile Number", :required => 'required' %>
+  <h3 class="beta-register-header">Login</h3>
+  <h5 class="beta-register-sub" id="beta-login-paragraph-customer">Login to CaterX to access catering packages<br>that fit your budget and needs.</h5>
+  <h5 class="beta-register-sub" id="beta-login-paragraph-caterer" style="display:none;">Login to CaterX to reach more customers<br>and boost your sales.</h5>
+  <div id="beta-login-customer">
+    <button class="beta-login-facebook" onclick="window.location.href = '/auth/facebook/';" type="button">Continue With Facebook</button>
+    <button class="beta-login-caterer-btn" onclick="caterer();" type="button">Catering Service Login</button>
   </div>
-  <div class="beta-login-password beta-login-input">
-    <p class="beta-login-input-label">PASSWORD</p>
-    <%= f.password_field :password, placeholder: "Password" %>
-  </div>
-  <div class="beta-login-submit">
-    <button type="submit">Log In</button>
-  </div>
-  <div class="beta-login-escape">
-    <p>Not a catering service? <button onclick="traveller();" type="button">Login as Customer</button></p>
+  <div id="beta-login-caterer" style="display:none;">
+    <%= form_for :login, namespace: 'beta', :method => 'post', url: login_submit_path do |f| %>
+    <div class="beta-login-email beta-login-input">
+      <p class="beta-login-input-label">MOBILE NUMBER</p>
+      <%= f.text_field :mobile, placeholder: "Mobile Number", :required => 'required' %>
+    </div>
+    <div class="beta-login-password beta-login-input">
+      <p class="beta-login-input-label">PASSWORD</p>
+      <%= f.password_field :password, placeholder: "Password" %>
+    </div>
+    <div class="beta-login-submit">
+      <button type="submit">Log In</button>
+    </div>
+    <% end %>
+    <div class="beta-login-escape">
+      <p>Not a catering service? <button onclick="customer();" type="button">Login as Customer</button></p>
+    </div>
   </div>
 </div>
-<% end %>
+<script>
+function caterer() {
+document.getElementById('beta-login-paragraph-customer').style.display = "none";
+document.getElementById('beta-login-paragraph-caterer').style.display = "block";
+document.getElementById('beta-login-caterer').style.display = "block";
+document.getElementById('beta-login-customer').style.display = "none";
+}
+function customer() {
+document.getElementById('beta-login-paragraph-caterer').style.display = "none";
+document.getElementById('beta-login-paragraph-customer').style.display = "block";
+document.getElementById('beta-login-caterer').style.display = "none";
+document.getElementById('beta-login-customer').style.display = "block";
+}
+if (window.location.href.split('?u=')[1] == "caterer") {
+setTimeout(caterer, 25);
+}
+</script>

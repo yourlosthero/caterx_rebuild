@@ -1,11 +1,13 @@
-<%= form_for :caterer, namespace: 'beta', :method => 'post', url: caterers_path do |f| %>
 <div class="beta-register-inputs">
+	<h3 class="beta-register-header">Register</h3>
+	<h5 class="beta-register-sub">Join CaterX in making unforgettable events<br> and start boosting your sales.</h5>
+	<%= form_for :caterer, namespace: 'beta', :method => 'post', url: caterers_path do |f| %>
 	<div class="beta-register-email beta-register-input">
 		<p class="beta-register-input-label">NAME OF CATERING SERVICE</p>
 		<%= f.text_field :name, placeholder: "Name of Catering Service", :required => 'required' %>
 	</div>
 	<div class="beta-register-email beta-register-input">
-		<p class="beta-register-input-label">Mobile Number</p>
+		<p class="beta-register-input-label">MOBILE NUMBER</p>
 		<%= f.text_field :mobile_1, placeholder: "09123456789", :required => 'required', maxlength: 11 %>
 	</div>
 	<div class="beta-register-password beta-register-input">
@@ -19,8 +21,8 @@
 	<div class="beta-register-submit">
 		<button type="submit" id="beta-register-submit-button">Register</button>
 	</div>
+	<% end %>
 	<div class="beta-register-escape">
 		<p>Already have an account? <button onclick="window.location.href = '/login?u=caterer';" type="button">Login</button></p>
 	</div>
 </div>
-<% end %>
