@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<%= csrf_meta_tags %>
+		<title><% if yield(:title) == "" %>CaterX - Catering Services for Birthdays, Debuts, & Weddings<% else %><%= yield(:title) %><% end %></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="keywords" content="caterx,caterx.com,cater,caterer,events,booking,catering services,packages,wedding,debut,catering,services,search caterers,cater search,wedding caterers,debut caterers,catering website">
+		<meta name="description" content='<% if yield(:description) == "" %>Catering Service for Baptismal, Birthdays, Debuts, & Weddings.<% else %><%= yield(:description) %><% end %>'>
+		<meta property="og:title" content='<% if yield(:title) == "" %>CaterX - Catering Services for Birthdays, Debuts, & Weddings<% else %><%= yield(:title) %><% end %>'>
+		<meta property="og:description" content='<% if yield(:description) == "" %>Catering Service for Baptismal, Birthdays, Debuts, & Weddings.<% else %><%= yield(:description) %><% end %>'/>
+		<meta property="og:image" content='<% if yield(:image) == "" %>https://www.caterx.co/og_image.png<% else %><%= yield(:image) %><% end %>'/>
+		<meta property="og:type" content='website'/>
+		<meta property="fb:app_id" content="1957982941198055" />
+		<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => "true" %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => "reload", defer: true %>
+	</head>
+	<body>
+		<%= yield %>
+	</body>
+</html>

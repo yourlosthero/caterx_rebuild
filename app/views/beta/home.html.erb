@@ -1,0 +1,11 @@
+<%= form_for :search, namespace: 'beta', :method => 'get', url: search_path do |f| %>
+<div class="beta-main-search-inputs">
+	<div class="beta-main-search-destination beta-main-search-input">
+		<p class="beta-main-search-input-label">TYPE OF EVENT</p>
+		<%= f.select :event, options_for_select(@events) %>
+	</div>
+	<div class="beta-main-search-submit">
+		<button type="submit">Search</button>
+	</div>
+</div>
+<% end %>

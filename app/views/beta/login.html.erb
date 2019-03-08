@@ -1,0 +1,19 @@
+<button class="beta-login-facebook" onclick="window.location.href = '/auth/facebook/';" type="button">Continue With Facebook</button>
+<%= form_for :login, namespace: 'beta', :method => 'post', url: login_submit_path do |f| %>
+<div class="beta-login-inputs">
+  <div class="beta-login-email beta-login-input">
+    <p class="beta-login-input-label">MOBILE NUMBER</p>
+    <%= f.text_field :mobile, placeholder: "Mobile Number", :required => 'required' %>
+  </div>
+  <div class="beta-login-password beta-login-input">
+    <p class="beta-login-input-label">PASSWORD</p>
+    <%= f.password_field :password, placeholder: "Password" %>
+  </div>
+  <div class="beta-login-submit">
+    <button type="submit">Log In</button>
+  </div>
+  <div class="beta-login-escape">
+    <p>Not a catering service? <button onclick="traveller();" type="button">Login as Customer</button></p>
+  </div>
+</div>
+<% end %>

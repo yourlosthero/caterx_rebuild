@@ -1,0 +1,97 @@
+<%= form_with(model: caterer, local: true) do |form| %>
+  <% if caterer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(caterer.errors.count, "error") %> prohibited this caterer from being saved:</h2>
+
+      <ul>
+      <% caterer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :caterer_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :caterer_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password, id: :caterer_password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mobile_1 %>
+    <%= form.text_field :mobile_1, id: :caterer_mobile_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mobile_2 %>
+    <%= form.text_field :mobile_2, id: :caterer_mobile_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mobile_3 %>
+    <%= form.text_field :mobile_3, id: :caterer_mobile_3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tel_1 %>
+    <%= form.text_field :tel_1, id: :caterer_tel_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tel_2 %>
+    <%= form.text_field :tel_2, id: :caterer_tel_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tel_3 %>
+    <%= form.text_field :tel_3, id: :caterer_tel_3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :caterer_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :logo %>
+    <%= form.text_field :logo, id: :caterer_logo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :uid %>
+    <%= form.text_field :uid, id: :caterer_uid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :verified %>
+    <%= form.text_field :verified, id: :caterer_verified %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :caterer_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :resend %>
+    <%= form.text_field :resend, id: :caterer_resend %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tagline %>
+    <%= form.text_area :tagline, id: :caterer_tagline %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

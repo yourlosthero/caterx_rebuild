@@ -1,0 +1,89 @@
+<%= form_with(model: package, local: true) do |form| %>
+  <% if package.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(package.errors.count, "error") %> prohibited this package from being saved:</h2>
+
+      <ul>
+      <% package.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :package_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :guests %>
+    <%= form.number_field :guests, id: :package_guests %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price, id: :package_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :package_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :design_amenities %>
+    <%= form.text_area :design_amenities, id: :package_design_amenities %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other_amenities %>
+    <%= form.text_area :other_amenities, id: :package_other_amenities %>
+  </div>
+
+  <div class="field">
+    <%= form.label :policy %>
+    <%= form.text_area :policy, id: :package_policy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :terms %>
+    <%= form.text_area :terms, id: :package_terms %>
+  </div>
+
+  <div class="field">
+    <%= form.label :downpayment %>
+    <%= form.number_field :downpayment, id: :package_downpayment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mode_of_payment %>
+    <%= form.text_field :mode_of_payment, id: :package_mode_of_payment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :food %>
+    <%= form.text_area :food, id: :package_food %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remember_policy %>
+    <%= form.text_field :remember_policy, id: :package_remember_policy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remember_terms %>
+    <%= form.text_field :remember_terms, id: :package_remember_terms %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remember_payment %>
+    <%= form.text_field :remember_payment, id: :package_remember_payment %>
+  </div>
+
+  <%= form.hidden_field :caterer_id, id: :package_caterer_id, value: session[:caterer_id] %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
